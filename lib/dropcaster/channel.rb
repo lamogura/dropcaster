@@ -105,7 +105,14 @@ module Dropcaster
         all_items << item
       }
 
-      all_items.sort{|x, y| y.pub_date <=> x.pub_date}
+      # If sort_by is not given use  is not given, take the channel URL as a base.
+      if @attributes[:sort_by].blank? or @attributes[:sort_by] == "date"
+        Dropcaster.logger.info("Sorting channel items by pub_date")
+        all_items.sort{|x, y| y.file_name <=> x.file_name}
+      else
+        Dropcaster.logger.info("Sorting channel items by filename")
+        all_items.sort{|x, y| x.file_name <=> y.file_name}
+      end
     end
 
     # from http://stackoverflow.com/questions/4136248
