@@ -112,6 +112,15 @@ module Dropcaster
       else
         Dropcaster.logger.info("Sorting channel items by filename")
         all_items.sort{|x, y| x.file_name <=> y.file_name}
+
+        Dropcaster.logger.info("Forcing pub_date times to be in order of filenames")
+
+        one_second = Rational(1, 86400)
+        ref_time = all_items[0].pub_date if all_items.count > 0
+
+        all_items.each_with_index { |item, i|
+          item.pub_date = ref_time + i*one_second
+        }
       end
     end
 

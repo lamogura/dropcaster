@@ -3,8 +3,8 @@ require 'digest/sha1'
 
 module Dropcaster
   class Item
-    attr_reader :file_name, :tag, :tag2, :duration, :file_size, :uuid, :pub_date, :pub_date, :lyrics
-    attr_accessor :artist, :image_url, :url, :keywords
+    attr_reader :file_name, :tag, :tag2, :duration, :file_size, :uuid, :lyrics
+    attr_accessor :artist, :image_url, :url, :keywords, :pub_date
 
     def initialize(file_path, options = nil)
       Mp3Info.open(file_path){|mp3info|
