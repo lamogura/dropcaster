@@ -1,5 +1,11 @@
 # Dropcaster - Simple Podcast Publishing with Dropbox
 
+Mac fix:
+```
+brew install libxml2
+bundle config build.libxml-ruby --use-system-libraries=true --with-xml2-include=/usr/local/opt/libxml2/include/libxml2/
+```
+
 [![Build Status](https://travis-ci.org/nerab/dropcaster.png?branch=master)](https://travis-ci.org/nerab/dropcaster)
 
   _This project is developed with the [readme-driven development](http://tom.preston-werner.com/2010/08/23/readme-driven-development.html) method. This file describes the functionality that is actually implemented, whereas the vision reflects where the tool should go._
